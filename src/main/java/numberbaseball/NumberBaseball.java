@@ -10,15 +10,49 @@ public class NumberBaseball {
 
     public static void main(String[] args) {
         NumberBaseball numberBaseball = new NumberBaseball();
-        numberBaseball.prepareGame();
-        numberBaseball.gameStart();
+
+        boolean continueGame = true;
+        while (continueGame) {
+            numberBaseball.prepareGame();
+            numberBaseball.gameStart();
+            //3. continueGame Input 받기
+        }
     }
 
     private void gameStart() {
         Scanner scanner = new Scanner(System.in);
+        Result result = new Result(SIZE);
 
-        while (true) {
+        while (result.notRightAnswer()) {
             String input = getUserInput(scanner);
+            compareNumber(input, result);
+
+            result.printResult();
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private void compareNumber(String input, Result result) {
+        result.initResult();
+        if (input == null) {
+            return;
+        }
+
+        for (int i = 0; i < SIZE; i++) {
+            counting(i, input, result);
+        }
+    }
+
+    private void counting(int index, String input, Result result) {
+        char inputValue = input.charAt(index);
+        char comparedValue = computerNumber.charAt(index);
+
+        if (inputValue == comparedValue) {
+            result.addStrike();
+            return;
+        }
+        if (computerNumber.contains(inputValue + "")) {
+            result.addBall();
         }
     }
 
