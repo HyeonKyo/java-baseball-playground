@@ -1,5 +1,7 @@
 package numberbaseball;
 
+import java.util.Scanner;
+
 public class NumberBaseball {
 
     private String computerNumber;
@@ -9,6 +11,26 @@ public class NumberBaseball {
     public static void main(String[] args) {
         NumberBaseball numberBaseball = new NumberBaseball();
         numberBaseball.prepareGame();
+        numberBaseball.gameStart();
+    }
+
+    private void gameStart() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            String input = getUserInput(scanner);
+        }
+    }
+
+    private String getUserInput(Scanner scanner) {
+        System.out.print("숫자를 입력해 주세요 : ");
+        String input = scanner.nextLine();
+
+        if (input.length() != SIZE) {
+            System.out.println("잘못된 입력입니다!");
+            return null;
+        }
+        return input;
     }
 
     private void prepareGame() {
