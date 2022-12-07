@@ -15,8 +15,40 @@ public class NumberBaseball {
         while (continueGame) {
             numberBaseball.prepareGame();
             numberBaseball.gameStart();
-            //3. continueGame Input 받기
+            continueGame = numberBaseball.getContinueInput();
         }
+    }
+
+    private boolean getContinueInput() {
+        Scanner scanner = new Scanner(System.in);
+        Boolean continueResult = null;
+
+        while (continueResult == null) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String continueInput = scanner.nextLine();
+
+            continueResult = checkContinueResult(continueInput);
+        }
+        return continueResult;
+    }
+
+    private Boolean checkContinueResult(String continueInput) {
+        try {
+            int inputValue = Integer.parseInt(continueInput);
+            return continueResult(inputValue);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    private Boolean continueResult(int value) {
+        if (value == 1) {
+            return true;
+        }
+        if (value == 2) {
+            return false;
+        }
+        return null;
     }
 
     private void gameStart() {
