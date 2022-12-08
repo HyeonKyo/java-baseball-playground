@@ -26,4 +26,12 @@ public class Ball {
             throw new IllegalArgumentException("1이상 9이하의 값만 가능합니다.");
         }
     }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public int getNumber() {
+        return number;
+    }
 }
