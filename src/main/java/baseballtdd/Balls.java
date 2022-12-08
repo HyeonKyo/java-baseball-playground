@@ -41,6 +41,10 @@ public class Balls {
         return balls;
     }
 
+    public int size() {
+        return balls.size();
+    }
+
     private void makeBallList(List<Integer> numbers) {
         balls = new ArrayList<>(SIZE);
         for (int i = 0; i < SIZE; i++) {

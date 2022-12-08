@@ -40,6 +40,11 @@
 * [x] 두 Balls 비교 카운팅 로직
   * [x] Balls에 Ball, index를 넘겨주어 상태값 리턴
   * [x] 카운팅 결과(Result) VO에 결과 값 담아서 리턴
-* [ ] 게임 진행 클래스
+* [x] 게임 진행 클래스 생성 및 게임 준비 (BaseballGame)
+  * [x] 생성 시 NumberGenerator를 초기화
+  * [x] prepare() 메소드 실행 시 computer의 랜덤 Balls 저장
+* [ ] gameStart() 메소드 실행 시 사용자 입력과 상호작용
   * [ ] 사용자 입력 받고 유효성 검사
-  * [ ] 결과에 따른 진행 로직
+  * [ ] 반복문 돌리며 게임 끝날 때까지 수행
+  * [ ] 각 턴 마다 result값 출력 로직
+  * [ ] 게임 종료 로직
