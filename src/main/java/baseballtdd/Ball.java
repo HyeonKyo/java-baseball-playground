@@ -1,24 +1,14 @@
 package baseballtdd;
 
 public class Ball {
-    private static final int SIZE = 3;
     public static final int MIN_NO = 1;
     public static final int MAX_NO = 9;
 
-    private int position;
     private int number;
 
-    public Ball(int position, int number) {
+    public Ball(int number) {
         validNumber(number);
-        validPosition(position);
-        this.position = position;
         this.number = number;
-    }
-
-    private void validPosition(int position) {
-        if (position < 1 || position > SIZE) {
-            throw new IllegalArgumentException(String.format("위치 값은 1이상 %d이하만 가능합니다.", SIZE));
-        }
     }
 
     private void validNumber(int value) {
@@ -27,11 +17,16 @@ public class Ball {
         }
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public int getNumber() {
         return number;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ball ball = (Ball) o;
+        return number == ball.number;
+    }
+
 }
