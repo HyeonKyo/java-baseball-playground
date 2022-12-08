@@ -35,4 +35,5 @@ public class BallsTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Balls(Arrays.asList(1, 2, 2)));
     }
+
 }
