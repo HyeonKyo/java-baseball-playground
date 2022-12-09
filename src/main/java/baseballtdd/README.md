@@ -43,8 +43,8 @@
 * [x] 게임 진행 클래스 생성 및 게임 준비 (BaseballGame)
   * [x] 생성 시 NumberGenerator를 초기화
   * [x] prepare() 메소드 실행 시 computer의 랜덤 Balls 저장
-* [ ] gameStart() 메소드 실행 시 사용자 입력과 상호작용
+* [x] gameStart() 메소드 실행 시 사용자 입력과 상호작용
   * [x] 사용자 입력 받고 유효성 검사, Balls로 리턴
   * [x] compare후 리턴 값인 Result의 출력 로직
   * [x] 게임 종료 후 게임 이어서 할 지 입력 받는 로직
-  * [ ] 게임 종료 로직
+  * [x] 게임 정상 진행 및 종료 로직

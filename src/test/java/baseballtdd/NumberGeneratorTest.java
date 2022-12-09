@@ -10,9 +10,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class NumberGeneratorTest {
 
@@ -21,10 +21,12 @@ public class NumberGeneratorTest {
     static final String INPUT_ERROR_MESSAGE = "잘못된 입력입니다. 다시 입력해주세요.";
 
     NumberGenerator numberGenerator;
+    Scanner scanner;
 
     @BeforeEach
     void setUp() {
         numberGenerator = new NumberGenerator();
+        scanner = new Scanner(System.in);
     }
 
     @DisplayName("1-9 랜덤 생성 테스트")
@@ -53,7 +55,7 @@ public class NumberGeneratorTest {
 
     @Test
     void 입력숫자_처리_test() {
-        System.setIn(new ByteArrayInputStream("123".getBytes()));
+        System.setIn(new ByteArrayInputStream("123\n".getBytes()));
 
         List<Integer> numbers = numberGenerator.makeInputNumbers();
         assertThat(numbers).containsExactly(1, 2, 3);
@@ -61,6 +63,7 @@ public class NumberGeneratorTest {
 
     @Test
     void 입력숫자_자리수_검증() {
+
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 

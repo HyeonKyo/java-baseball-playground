@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class BaseballGame {
     private static final String CONTINUE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String WRONG_MESSAGE = "잘못된 입력입니다. 다시 입력하세요.";
+    private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     private final NumberGenerator numberGenerator;
     private Balls computerBalls;
@@ -18,31 +19,28 @@ public class BaseballGame {
     }
 
     public void gameStart() {
-        boolean continueFlag = true;
-        while (continueFlag) {
-            //1. user input 받기, 유효성 검사
+        boolean finishGameFlag = false;
+        while (!finishGameFlag) {
             Balls userBalls = new Balls(numberGenerator.makeInputNumbers());
-            //2. compare하기
-//            computerBalls.compare();
-            //3. result 출력
-
-            //4. 계속 할 것인지 입력 받기
+            CountResult result = computerBalls.compare(userBalls);
+            result.print();
+            finishGameFlag = result.isFinish();
         }
+        System.out.println(END_MESSAGE);
     }
 
-    public Balls getComputerBalls() {
-        return computerBalls;
-    }
-
-    public boolean continueGameInput() {
+    public boolean continueGame() {
         Scanner scanner = new Scanner(System.in);
 
         String input = getInputTrimString(scanner, CONTINUE_MESSAGE);
         while (notValidContinueInput(input)) {
             input = getInputTrimString(scanner, WRONG_MESSAGE);
         }
-        scanner.close();
         return isContinue(input);
+    }
+
+    public Balls getComputerBalls() {
+        return computerBalls;
     }
 
     private boolean isContinue(String input) {

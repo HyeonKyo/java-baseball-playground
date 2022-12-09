@@ -3,14 +3,9 @@ package baseballtdd;
 import java.util.*;
 
 public class NumberGenerator {
-
     private static final int SIZE = 3;
     private static final String INPUT_MESSAGE = "숫자를 입력해 주세요 : ";
     private static final String INPUT_ERROR_MESSAGE = "잘못된 입력입니다. 다시 입력해주세요.";
-
-    public NumberGenerator() {
-
-    }
 
     public List<Integer> makeRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
@@ -38,13 +33,17 @@ public class NumberGenerator {
 
     private String getUserInputString() {
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+        String input = getNumberInput(scanner);
         while (!isValid(input)) {
-            System.out.print(INPUT_MESSAGE);
-            input = scanner.nextLine();
+            input = getNumberInput(scanner);
         }
-        scanner.close();
         return input;
+    }
+
+    private String getNumberInput(Scanner scanner) {
+        System.out.print(INPUT_MESSAGE);
+        String input = scanner.nextLine();
+        return input.trim();
     }
 
     private boolean isValid(String input) {

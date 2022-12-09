@@ -35,15 +35,15 @@ public class BaseballGameTest {
     @Test
     void 게임_지속_여부_입력_받기() {
         System.setIn(new ByteArrayInputStream("1".getBytes()));
-        boolean isContinue = baseballGame.continueGameInput();
+        boolean isContinue = baseballGame.continueGame();
         assertThat(isContinue).isTrue();
 
         System.setIn(new ByteArrayInputStream("2".getBytes()));
-        boolean isContinue2 = baseballGame.continueGameInput();
+        boolean isContinue2 = baseballGame.continueGame();
         assertThat(isContinue2).isFalse();
 
         System.setIn(new ByteArrayInputStream("2   ".getBytes()));
-        boolean isContinue3 = baseballGame.continueGameInput();
+        boolean isContinue3 = baseballGame.continueGame();
         assertThat(isContinue3).isFalse();
     }
 
@@ -53,11 +53,11 @@ public class BaseballGameTest {
         System.setOut(new PrintStream(out));
 
         System.setIn(new ByteArrayInputStream("3\n1".getBytes()));
-        baseballGame.continueGameInput();
+        baseballGame.continueGame();
         assertThat(out.toString()).contains("잘못된 입력입니다. 다시 입력하세요.");
 
         System.setIn(new ByteArrayInputStream("a\n1".getBytes()));
-        baseballGame.continueGameInput();
+        baseballGame.continueGame();
         assertThat(out.toString()).contains("잘못된 입력입니다. 다시 입력하세요.");
     }
 
