@@ -3,6 +3,8 @@ package baseballtdd;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseballGameTest {
@@ -23,7 +25,8 @@ public class BaseballGameTest {
     @Test
     void prepare_test() {
         baseballGame.prepare();
-        assertThat(baseballGame.getBalls()).isNotNull();
-        assertThat(baseballGame.getBalls().size()).isEqualTo(SIZE);
+        assertThat(baseballGame.getComputerBalls()).isNotNull();
+        assertThat(baseballGame.getComputerBalls().size()).isEqualTo(SIZE);
     }
+
 }
