@@ -7,11 +7,11 @@ public class Ball {
     private int number;
 
     public Ball(int number) {
-        validNumber(number);
+        checkValidNumber(number);
         this.number = number;
     }
 
-    private void validNumber(int value) {
+    private void checkValidNumber(int value) {
         if (value < MIN_NO || value > MAX_NO) {
             throw new IllegalArgumentException("1이상 9이하의 값만 가능합니다.");
         }
