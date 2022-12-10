@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Balls {
     private static final int SIZE = 3;
@@ -13,7 +14,7 @@ public class Balls {
     public Balls(List<Integer> numbers) {
         checkValidSize(numbers);
         checkDuplicateNo(numbers);
-        makeBallList(numbers);
+        balls = mapBalls(numbers);
     }
 
     public CountResult compare(Balls userBalls) {
@@ -45,11 +46,10 @@ public class Balls {
         return balls.size();
     }
 
-    private void makeBallList(List<Integer> numbers) {
-        balls = new ArrayList<>(SIZE);
-        for (int i = 0; i < SIZE; i++) {
-            balls.add(new Ball(numbers.get(i)));
-        }
+    private List<Ball> mapBalls(List<Integer> numbers) {
+        return numbers.stream()
+                .map(Ball::new)
+                .collect(Collectors.toList());
     }
 
     private void checkDuplicateNo(List<Integer> numbers) {
